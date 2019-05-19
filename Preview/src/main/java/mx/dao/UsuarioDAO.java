@@ -6,11 +6,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import mx.model.CatalogoDTO;
+import mx.model.UsuarioDTO;
 
 @Repository
-public interface CatalogoDAO extends Serializable {
+public interface UsuarioDAO extends Serializable {
 
-	public List<CatalogoDTO> catRol(Map<String, Object> map);
+	public List<UsuarioDTO> listUsuarios(Map<String, Object> map);
 
 }

@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import mx.model.CatalogoDTO;
+import mx.model.UsuarioDTO;
 
 @Component
-public interface IfzCatalogoBO  extends Serializable {
+public interface IfzUsuarioBO  extends Serializable {
 	
-	public List<CatalogoDTO> catRol();
+	public List<UsuarioDTO> listUsuarios();
 	
 }

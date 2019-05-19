@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.dao.UsuarioDAO">
+
+	<resultMap id="R_UsuarioDTO" 				type="UsuarioDTO">	
+		<result property="idUsuario" 			column="ID_USUARIO"				javaType="int" /> 
+		<result property="correo" 				column="CORREO"					javaType="String" />
+		<result property="password"				column="PASSWORD"				javaType="String" /> 
+		<result property="idUsuarioFirebase" 	column="ID_USUARIO_FAREBASE"	javaType="String" />
+	</resultMap>
+
+	<!--select id="selectCatPorcentajeRnme" parameterType="java.util.Map" statementType="CALLABLE">
+        { #{V_CURSOR, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=R_CatalogoDTO
+		} = call AUTONOMIA.PKG_RNME.FN_CAT_PORCENTAJERNME }
+	</select-->
+	
+	
+	<select id="listUsuarios" resultMap="R_UsuarioDTO" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_SELECT_USUARIO()}
+   </select>
+	
+</mapper>

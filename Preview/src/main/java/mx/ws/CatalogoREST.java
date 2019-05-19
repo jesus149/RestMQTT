@@ -14,25 +14,24 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
 
-import mx.bo.IfzCatalogoBO;
-import mx.model.CatalogoDTO;
+import mx.bo.IfzUsuarioBO;
+import mx.model.UsuarioDTO;
 
 @RestController
-@RequestMapping(value = "/catalogo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/usuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CatalogoREST implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final HttpHeaders HTTP_HEADERS = new HttpHeaders();
 
 	@Autowired
-	private IfzCatalogoBO catalogoBO;
+	private IfzUsuarioBO usuarioBO;
 
 	@Resource
 	private WebServiceContext webServiceContext;
@@ -45,12 +44,12 @@ public class CatalogoREST implements Serializable {
 		HTTP_HEADERS.setAccessControlAllowOrigin("*");
 	}
 
-	@RequestMapping(value = "/catRol", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/listUsuarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> porcentajeRnme() {
 		this.map = new HashMap<String, Object>();
 		try {
-			List<CatalogoDTO> listCatRol = catalogoBO.catRol();
-			this.map.put("catRol", listCatRol);
+			List<UsuarioDTO> listUsuarios = usuarioBO.listUsuarios();
+			this.map.put("listUsuarios", listUsuarios);
 		} catch (Exception e) {
 			this.map.put("error", e);
 		}

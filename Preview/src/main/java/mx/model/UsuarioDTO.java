@@ -10,132 +10,81 @@ public class UsuarioDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int idUsuario;
-	private String usuario;
-	private String curp;
 	private String correo;
-	private String telefono;
-	private String cel;
-	private String nombre;
-	private String primerAp;
-	private String segundoAp;
-	private int idEntidad;
-	private int idRol;
-	private String rol;
+	private String password;
+	private String idUsuarioFirebase;
 
 	public UsuarioDTO() {
 	}
 
-	public UsuarioDTO(int idUsuario, String usuario, String curp, String correo, String telefono, String cel,
-			String nombre, String primerAp, String segundoAp, int idEntidad, int idRol, String rol) {
+	/**
+	 * @param idUsuario
+	 * @param correo
+	 * @param password
+	 * @param idUsuarioFirebase
+	 */
+	public UsuarioDTO(int idUsuario, String correo, String password, String idUsuarioFirebase) {
 		super();
 		this.idUsuario = idUsuario;
-		this.usuario = usuario;
-		this.curp = curp;
 		this.correo = correo;
-		this.telefono = telefono;
-		this.cel = cel;
-		this.nombre = nombre;
-		this.primerAp = primerAp;
-		this.segundoAp = segundoAp;
-		this.idEntidad = idEntidad;
-		this.idRol = idRol;
-		this.rol = rol;
+		this.password = password;
+		this.idUsuarioFirebase = idUsuarioFirebase;
 	}
 
+	/**
+	 * @return the idUsuario
+	 */
 	public int getIdUsuario() {
 		return idUsuario;
 	}
 
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getCurp() {
-		return curp;
-	}
-
-	public void setCurp(String curp) {
-		this.curp = curp;
-	}
-
+	/**
+	 * @return the correo
+	 */
 	public String getCorreo() {
 		return correo;
 	}
 
+	/**
+	 * @param correo the correo to set
+	 */
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getCel() {
-		return cel;
+	/**
+	 * @return the idUsuarioFirebase
+	 */
+	public String getIdUsuarioFirebase() {
+		return idUsuarioFirebase;
 	}
 
-	public void setCel(String cel) {
-		this.cel = cel;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getPrimerAp() {
-		return primerAp;
-	}
-
-	public void setPrimerAp(String primerAp) {
-		this.primerAp = primerAp;
-	}
-
-	public String getSegundoAp() {
-		return segundoAp;
-	}
-
-	public void setSegundoAp(String segundoAp) {
-		this.segundoAp = segundoAp;
-	}
-
-	public int getIdEntidad() {
-		return idEntidad;
-	}
-
-	public void setIdEntidad(int idEntidad) {
-		this.idEntidad = idEntidad;
-	}
-
-	public int getIdRol() {
-		return idRol;
-	}
-
-	public void setIdRol(int idRol) {
-		this.idRol = idRol;
-	}
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
+	/**
+	 * @param idUsuarioFirebase the idUsuarioFirebase to set
+	 */
+	public void setIdUsuarioFirebase(String idUsuarioFirebase) {
+		this.idUsuarioFirebase = idUsuarioFirebase;
 	}
 
 	@Override
@@ -143,28 +92,12 @@ public class UsuarioDTO implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("UsuarioDTO [idUsuario=");
 		builder.append(idUsuario);
-		builder.append(", usuario=");
-		builder.append(usuario);
-		builder.append(", curp=");
-		builder.append(curp);
 		builder.append(", correo=");
 		builder.append(correo);
-		builder.append(", telefono=");
-		builder.append(telefono);
-		builder.append(", cel=");
-		builder.append(cel);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", primerAp=");
-		builder.append(primerAp);
-		builder.append(", segundoAp=");
-		builder.append(segundoAp);
-		builder.append(", idEntidad=");
-		builder.append(idEntidad);
-		builder.append(", idRol=");
-		builder.append(idRol);
-		builder.append(", rol=");
-		builder.append(rol);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", idUsuarioFirebase=");
+		builder.append(idUsuarioFirebase);
 		builder.append("]");
 		return builder.toString();
 	}
