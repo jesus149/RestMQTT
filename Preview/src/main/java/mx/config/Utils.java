@@ -9,7 +9,6 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -228,6 +227,7 @@ public class Utils implements Serializable {
 
 	}
 
+	@SuppressWarnings("unused")
 	private static String base64Encode(String cadena) {
 		byte[] encodedBytes = Base64.encodeBase64(cadena.getBytes());
 		return new String(encodedBytes, Charset.forName("UTF-8"));
