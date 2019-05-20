@@ -12,5 +12,7 @@ import mx.model.UsuarioDTO;
 public interface UsuarioDAO extends Serializable {
 
 	public List<UsuarioDTO> listUsuarios(Map<String, Object> map);
+	
+	public String insertUsuario(Map<String, Object> map);
 
 }

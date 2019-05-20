@@ -9,8 +9,6 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -31,8 +29,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.ParseException;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
@@ -65,44 +61,6 @@ public class Utils implements Serializable {
 			stringBuilder.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
 		return stringBuilder.toString();
-	}
-
-	/**
-	 * Metodo para la utentificacion de los WS
-	 * 
-	 * @param webServiceContext
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static boolean login(final WebServiceContext webServiceContext) {
-		MessageContext messageContext = webServiceContext.getMessageContext();
-		Map<String, Object> httpHeaders = (Map<String, Object>) messageContext.get(MessageContext.HTTP_REQUEST_HEADERS);
-		List<String> userList = (List<String>) httpHeaders.get("username");
-		List<String> passList = (List<String>) httpHeaders.get("password");
-
-		String username = null;
-		String password = null;
-
-		if (userList != null && passList != null) {
-			try {
-				username = userList.get(0).toString();
-				password = passList.get(0).toString();
-				if (username.equals(Parametros.WS_CT_AUT_USER)
-						&& password.equals(Utils.encrypt(Parametros.WS_CT_AUT_PASS, "SHA-512"))) {
-					return true;
-				} else if (username.equals("CARGA") && password.equals(Utils.encrypt("Carga2017", "SHA-512"))) {
-					return true;
-				}
-			} catch (NoSuchAlgorithmException e) {
-				LOG.error(e);
-			} catch (NullPointerException e) {
-				LOG.error(e);
-			} catch (Exception e) {
-				LOG.error(e);
-			}
-		}
-
-		return false;
 	}
 
 	/**

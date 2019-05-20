@@ -23,18 +23,34 @@ public class UsuarioBO implements IfzUsuarioBO {
 
 	@Override
 	public List<UsuarioDTO> listUsuarios() {
-		List<UsuarioDTO> list = null;
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			list = usuarioDAO.listUsuarios(map);
-			// list = (List<CatalogoDTO>) map.get("V_CURSOR");
-			return list;
+			return usuarioDAO.listUsuarios(map);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			LOG.error(e);
 			return null;
 		}
 
+	}
+
+	@Override
+	public int insertUsuario(String correo, String pass, String idUsuarioFirebase) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+
+			map.put("P_CORREO", (correo != null && !correo.isEmpty()) ? correo : "");
+			map.put("P_PASS", (pass != null && !pass.isEmpty()) ? pass : "");
+			map.put("P_ID_USUARIO_FIREBASE", (idUsuarioFirebase != null && !idUsuarioFirebase.isEmpty()) ? idUsuarioFirebase : ""); 	
+
+			usuarioDAO.insertUsuario(map);
+			
+			return 1;
+			
+		} catch (Exception e) {
+			LOG.error(e);
+			return 0;
+		}
 	}
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.dao.TopicDAO">
+
+	<resultMap id="R_TopicDTO" 							type="TopicDTO">	
+	
+		<result property="idTopic" 			column="id_topic"			javaType="int" />
+		<result property="topic"			column="topic"				javaType="String" />
+		<result property="descripcion"		column="descripcion"		javaType="String" />
+		<result property="elemento"			column="elemento"			javaType="String" />
+		<result property="imagen"			column="imagen"				javaType="String" />
+		<result property="idTopicFirebase"	column="id_topic_firebase"	javaType="String" />
+		
+		<collection property="conexionDTO"	ofType="ConexionDTO">
+			<result property="idConexion" 		column="id_conexion"		javaType="int" />
+			<result property="nombreServicio"	column="nombreServicio"		javaType="String" />
+			<result property="host"				column="host"				javaType="String" />
+			<result property="puerto" 			column="puerto"				javaType="int" />
+			<result property="ssl"				column="ssl"				javaType="String" />
+			<result property="usuario"			column="usuario"			javaType="String" />
+			<result property="password"			column="password"			javaType="String" />
+			<result property="clientId"			column="client_id"			javaType="String" />
+		</collection>
+		       
+	</resultMap>
+	
+	<select id="listTopics" resultMap="R_TopicDTO" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_SELECT_TOPIC()}
+   </select>
+   
+   <select id="insertTopics" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_INSERT_TOPIC(#{P_TOPIC}, #{P_DESCRIPCION}, #{P_ELEMENTO}, #{P_IMAGEN}, 
+      	#{P_IDTOPICFIREBASE}, #{P_CLIENTID}, #{P_IDUSUARIOFIREBASE})}
+   </select>
+
+</mapper>

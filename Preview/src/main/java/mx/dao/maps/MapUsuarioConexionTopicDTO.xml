@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.dao.UsuarioConexionTopicDAO">
+
+	<resultMap id="R_UsuarioConexionTopicDTO"			type="UsuarioConexionTopicDTO">	
+	
+		<result property="valor"						column="valor_recibido"			javaType="String" />
+		<result property="fechaHoraRecibio"				column="fecha_hora_recibio"		javaType="String" />
+		<result property="usuarioDTO.idUsuario"			column="id_usuario"				javaType="int" />
+		<result property="usuarioDTO.correo"			column="correo"					javaType="String" />
+		<result property="conexionDTO.idConexion"		column="id_conexion"			javaType="int" />
+		<result property="conexionDTO.nombreServicio"	column="nombreServicio"			javaType="String" />
+		<result property="topicDTO.idTopic"				column="id_topic"				javaType="int" />
+		<result property="topicDTO.topic"				column="topic"					javaType="String" />
+		       
+	</resultMap>
+
+	<select id="listUsuarioConexionTopic" resultMap="R_UsuarioConexionTopicDTO" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_SELECT_USUARIOCONEXIONTOPIC()}
+   </select>
+   
+   <select id="insertUsuarioConexionTopic" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_INSERT_USUARIOCONEXIONTOPIC(#{P_IDUSUARIOFIREBASE}, #{P_CLIENTID}, #{P_IDTOPICFIREBASE}, #{P_VALOR})}
+   </select>
+
+</mapper>

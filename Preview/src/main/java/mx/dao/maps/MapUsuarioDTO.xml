@@ -7,16 +7,14 @@
 		<result property="correo" 				column="CORREO"					javaType="String" />
 		<result property="password"				column="PASSWORD"				javaType="String" /> 
 		<result property="idUsuarioFirebase" 	column="ID_USUARIO_FAREBASE"	javaType="String" />
-	</resultMap>
-
-	<!--select id="selectCatPorcentajeRnme" parameterType="java.util.Map" statementType="CALLABLE">
-        { #{V_CURSOR, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=R_CatalogoDTO
-		} = call AUTONOMIA.PKG_RNME.FN_CAT_PORCENTAJERNME }
-	</select-->
-	
+	</resultMap>	
 	
 	<select id="listUsuarios" resultMap="R_UsuarioDTO" parameterType="java.util.Map" statementType="CALLABLE">
       {CALL s0f1s0ft_datacloud.SP_SELECT_USUARIO()}
+   </select>
+   
+   <select id="insertUsuario" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_INSERT_USUARIO(#{P_CORREO}, #{P_PASS}, #{P_ID_USUARIO_FIREBASE})}
    </select>
 	
 </mapper>

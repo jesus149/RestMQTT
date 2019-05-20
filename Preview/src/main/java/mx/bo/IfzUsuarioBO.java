@@ -8,8 +8,10 @@ import org.springframework.stereotype.Component;
 import mx.model.UsuarioDTO;
 
 @Component
-public interface IfzUsuarioBO  extends Serializable {
+public interface IfzUsuarioBO extends Serializable {
 	
 	public List<UsuarioDTO> listUsuarios();
+	
+	public int insertUsuario(String correo, String pass, String idUsuarioFirebase);
 	
 }

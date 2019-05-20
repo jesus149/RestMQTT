@@ -11,25 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import mx.bo.IfzUsuarioBO;
-import mx.model.UsuarioDTO;
+import mx.bo.IfzConexionBO;
+import mx.model.ConexionDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "applicationContext.xml")
-public class UsuarioTest {
-
+public class ConexionTest {
+	
 	@Autowired
-	private IfzUsuarioBO usuarioBO;
+	private IfzConexionBO conexionBO;
 
 	@Ignore
-	public void listUsuarios() {
-		List<UsuarioDTO> msg = usuarioBO.listUsuarios();
+	public void listConexiones() {
+		List<ConexionDTO> msg = conexionBO.listConexiones();
 		assertNotNull(msg);
 	}
 	
 	@Test
-	public void insertUsuario() {
-		int msg = usuarioBO.insertUsuario("javatest", "javaTest", "javaTest");
+	public void insertConexion() {
+		int msg = conexionBO.insertConexion("testJava", "testJava", 1, "testJava", "testJava", "testJava", "testJava", "OsujYnGqLaRFDQLSLxmqrrC2Ikj1");
 		assertNotNull(msg);
 	}
 

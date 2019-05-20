@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mx.dao.ConexionDAO">
+
+	<resultMap id="R_ConexionDTO" 							type="ConexionDTO">	
+	
+		<result property="idConexion" 		column="id_conexion"		javaType="int" />
+		<result property="nombreServicio"	column="nombreServicio"		javaType="String" />
+		<result property="host"				column="host"				javaType="String" />
+		<result property="puerto" 			column="puerto"				javaType="int" />
+		<result property="ssl"				column="ssl"				javaType="String" />
+		<result property="usuario"			column="usuario"			javaType="String" />
+		<result property="password"			column="password"			javaType="String" />
+		<result property="clientId"			column="client_id"			javaType="String" />
+		
+		<collection property="usuarioDTO"	ofType="UsuarioDTO">
+			<result property="idUsuario" 			column="ID_USUARIO"				javaType="int" /> 
+			<result property="correo" 				column="CORREO"					javaType="String" />
+			<result property="password"				column="PASSWORD"				javaType="String" /> 
+			<result property="idUsuarioFirebase" 	column="ID_USUARIO_FAREBASE"	javaType="String" />
+		</collection>
+		       
+	</resultMap>
+	
+	<select id="listConexiones" resultMap="R_ConexionDTO" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_SELECT_CONEXION()}
+   </select>
+   
+   <select id="insertConexion" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_INSERT_CONEXION(#{P_NOMBRESERVICO}, #{P_HOST}, #{P_PUERTO}, #{P_SSL}, 
+      	#{P_USUARIO}, #{P_PASSWORD}, #{P_CLIENTID}, #{P_IDUSUARIOFIREBASE})}
+   </select>
+
+</mapper>

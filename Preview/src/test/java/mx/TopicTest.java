@@ -11,25 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import mx.bo.IfzUsuarioBO;
-import mx.model.UsuarioDTO;
+import mx.bo.IfzTopicBO;
+import mx.model.TopicDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "applicationContext.xml")
-public class UsuarioTest {
+public class TopicTest {
 
 	@Autowired
-	private IfzUsuarioBO usuarioBO;
+	private IfzTopicBO topicBO;
 
 	@Ignore
-	public void listUsuarios() {
-		List<UsuarioDTO> msg = usuarioBO.listUsuarios();
+	public void listTopics() {
+		List<TopicDTO> msg = topicBO.listTopics();
 		assertNotNull(msg);
 	}
-	
+
 	@Test
-	public void insertUsuario() {
-		int msg = usuarioBO.insertUsuario("javatest", "javaTest", "javaTest");
+	public void insertTopics() {
+		int msg = topicBO.insertTopics("testJava", "testJava", "testJava", "testJava", "Letcvd08iOxqw8DXGQu",
+				"myClientId1557892600979", "OsujYnGqLaRFDQLSLxmqrrC2Ikj1");
 		assertNotNull(msg);
 	}
 

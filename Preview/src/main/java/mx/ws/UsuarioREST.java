@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,9 @@ import mx.bo.IfzUsuarioBO;
 import mx.model.UsuarioDTO;
 
 @RestController
-@RequestMapping(value = "/usuario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class CatalogoREST implements Serializable {
+@RequestMapping(value = "/usuario", method = { RequestMethod.GET,
+		RequestMethod.POST }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+public class UsuarioREST implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final HttpHeaders HTTP_HEADERS = new HttpHeaders();
@@ -55,6 +58,29 @@ public class CatalogoREST implements Serializable {
 		}
 
 		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/insertUsuario/", method = { RequestMethod.POST,
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<String> insertUsuario(HttpServletRequest request, HttpServletResponse response) {
+
+		String correo = request.getParameter("correo");
+		String pass = request.getParameter("pass");
+		String idUsuarioFirebase = request.getParameter("idUsuarioFirebase");
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = usuarioBO.insertUsuario(correo, pass, idUsuarioFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
 	}
 
 }
