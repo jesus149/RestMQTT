@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	 xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+	xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		 http://jax-ws.dev.java.net/spring/core 
+       http://jax-ws.java.net/spring/core.xsd
+       http://jax-ws.dev.java.net/spring/servlet 
+       http://jax-ws.java.net/spring/servlet.xsd" >
+
+	<context:annotation-config />
+    <context:component-scan base-package="mx" />
+
+	<!-- Begin MyBatis -->
+
+	<bean id="dataSource_MDMSEP" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	  	<property name="url" value="jdbc:mysql://mysql1001.mochahost.com:3306/s0f1s0ft_datacloud" />
+	  	<property name="username" value="s0f1s0ft_cloud" />
+	  	<property name="password" value="Welcome1!" />
+	</bean>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_MDMSEP" />
+	</bean>
+	<bean id="sqlSessionFactory_MDMSEP" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_MDMSEP" />
+	  	<property name="typeAliasesPackage" value="mx.model"/>
+	  	<!--property name="mapperLocations" value="classpath*:mx/gob/sep/siged/dao/maps/*.xml" /-->
+	  	<property name="mapperLocations" value="classpath*:maps/*.xml" />
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="mx.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_MDMSEP"/>
+	</bean>
+	<!--End MyBatis -->
+
+</beans>

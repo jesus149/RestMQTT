@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<context:annotation-config />
+ 	<!--aop:aspectj-autoproxy /-->
+	
+	<aop:aspectj-autoproxy proxy-target-class="true">
+    	<aop:include name="loggingAspect"/>
+	</aop:aspectj-autoproxy>
+	
+    <context:component-scan base-package="mx" />
+    
+    <aop:config>
+    	 <aop:pointcut id="pointcutsPersistencia" expression="execution(* mx.bo.*.*(..))"/>
+    	 <aop:advisor advice-ref="adviceTransacciones" pointcut-ref="pointcutsPersistencia"/>
+	</aop:config>
+	
+	<tx:advice id="adviceTransacciones" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" />
+    	</tx:attributes>
+	</tx:advice>
+    
+	<!--Begin MyBatis -->
+    <!--bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	  <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ex02-scan)(PORT=1521))(CONNECT_DATA=(SERVER=dedicated)(SERVICE_NAME=DESSIGED)))" />
+	  <property name="username" value="PEXTERNO" />
+	  <property name="password" value="S1G3D2017" />
+	</bean-->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	  <property name="url" value="jdbc:mysql://mysql1001.mochahost.com:3306/s0f1s0ft_datacloud" />
+	  <property name="username" value="s0f1s0ft_cloud" />
+	  <property name="password" value="Welcome1!" />
+	</bean>
+	
+	<!--bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/IsisDB"/>
+	</bean-->
+	
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="typeAliasesPackage" value="mx.model"/>
+	  <property name="mapperLocations" value="classpath*:mx/dao/maps/*.xml" />
+	</bean>
+    
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	  <constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="mx.dao" />
+	</bean>
+	<!--End MyBatis -->	    
+
+</beans>
