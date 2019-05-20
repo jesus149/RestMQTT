@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "3f50d584-0814-4469-8903-a31e4d9e1845",
+		"name": "RestMQTT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "listUsuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuario/listUsuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuario",
+								"listUsuarios"
+							]
+						},
+						"description": "Lista de usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "insertUsuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "smotiko49@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "************",
+									"type": "text"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "OsujYnGqLaRFDQLSLxmqrrC2Ikj1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuario/insertUsuario/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuario",
+								"insertUsuario",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "conexion",
+			"item": [
+				{
+					"name": "listConexiones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/conexion/listConexiones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"conexion",
+								"listConexiones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertConexion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombreServicio",
+									"value": "Servicio de prueba local",
+									"type": "text"
+								},
+								{
+									"key": "host",
+									"value": "m16.cloudmqtt.com",
+									"type": "text"
+								},
+								{
+									"key": "puerto",
+									"value": "32055",
+									"type": "text"
+								},
+								{
+									"key": "ssl",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "usuario",
+									"value": "xwfdiuze",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "16fme8_36j2q",
+									"type": "text"
+								},
+								{
+									"key": "clientId",
+									"value": "myClientId1557892600979",
+									"type": "text"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "OsujYnGqLaRFDQLSLxmqrrC2Ikj1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Preview/apiRest/MQTT/insertConexion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Preview",
+								"apiRest",
+								"MQTT",
+								"insertConexion",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topics",
+			"item": [
+				{
+					"name": "listConexiones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/topic/listTopics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"topic",
+								"listTopics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertTopics",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "topic",
+									"value": "CISTERNA1/NIVEL",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Nivel de la cisterna",
+									"type": "text"
+								},
+								{
+									"key": "elemento",
+									"value": "pie",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"value": "pie",
+									"type": "text"
+								},
+								{
+									"key": "idTopicFirebase",
+									"value": "Letcvd08iOxqw8DXGQu",
+									"type": "text"
+								},
+								{
+									"key": "clientId",
+									"value": "myClientId1557892600979",
+									"type": "text"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "OsujYnGqLaRFDQLSLxmqrrC2Ikj1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/topic/insertTopics/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"topic",
+								"insertTopics",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuarioConexionTopic",
+			"item": [
+				{
+					"name": "listUsuarioConexionTopic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuarioConexionTopic/listUsuarioConexionTopic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuarioConexionTopic",
+								"listUsuarioConexionTopic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertUsuarioConexionTopic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "valor",
+									"value": "restTest",
+									"type": "text"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "OsujYnGqLaRFDQLSLxmqrrC2Ikj1",
+									"type": "text"
+								},
+								{
+									"key": "clientId",
+									"value": "myClientId1557892600979",
+									"type": "text"
+								},
+								{
+									"key": "idTopicFirebase",
+									"value": "Letcvd08iOxqw8DXGQu",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuarioConexionTopic/insertUsuarioConexionTopic/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuarioConexionTopic",
+								"insertUsuarioConexionTopic",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
