@@ -86,33 +86,11 @@ public class UsuarioConexionTopicREST implements Serializable {
 
 	}
 
-	@RequestMapping(value = "/insertUsuarioConexionTopic2/", method = {
-			RequestMethod.POST }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> insertUsuarioConexionTopic2(@RequestParam("valor") String valor,
-			@RequestParam("idUsuarioFirebase") int host, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase,
-			@RequestParam("clientId") String clientId, @RequestParam("idTopicFirebase") String idTopicFirebase) {
-
-		this.map = new HashMap<String, Object>();
-
-		try {
-			int msj = usuarioConexionTopicBO.insertUsuarioConexionTopic(valor, idUsuarioFirebase, clientId,
-					idTopicFirebase);
-			this.map.put("output", msj);
-
-		} catch (Exception e) {
-			this.map.put("output", e);
-			System.out.println(e);
-
-		}
-		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
-
-	}
-	
-	@RequestMapping(value = "/insertUsuarioConexionTopic3/", method = {
+	@RequestMapping(value = "/insertUsuarioConexionTopicGet/", method = {
 			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> insertUsuarioConexionTopic3(@RequestParam("valor") String valor,
-			@RequestParam("idUsuarioFirebase") int host, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase,
-			@RequestParam("clientId") String clientId, @RequestParam("idTopicFirebase") String idTopicFirebase) {
+	public ResponseEntity<String> insertUsuarioConexionTopicGet(@RequestParam("valor") String valor,
+			@RequestParam("idUsuarioFirebase") String idUsuarioFirebase, @RequestParam("clientId") String clientId,
+			@RequestParam("idTopicFirebase") String idTopicFirebase) {
 
 		this.map = new HashMap<String, Object>();
 

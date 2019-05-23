@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
@@ -76,7 +77,31 @@ public class ConexionREST implements Serializable {
 		this.map = new HashMap<String, Object>();
 
 		try {
-			int msj = conexionBO.insertConexion(nombreServicio, host, puerto, ssl, usuario, password, clientId, idUsuarioFirebase);
+			int msj = conexionBO.insertConexion(nombreServicio, host, puerto, ssl, usuario, password, clientId,
+					idUsuarioFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/insertConexionGet/", method = {
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<String> insertConexionGet(@RequestParam("nombreServicio") String nombreServicio,
+			@RequestParam("host") String host, @RequestParam("puerto") int puerto, @RequestParam("ssl") String ssl,
+			@RequestParam("usuario") String usuario, @RequestParam("password") String password,
+			@RequestParam("clientId") String clientId, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase) {
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = conexionBO.insertConexion(nombreServicio, host, puerto, ssl, usuario, password, clientId,
+					idUsuarioFirebase);
 			this.map.put("output", msj);
 
 		} catch (Exception e) {

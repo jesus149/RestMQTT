@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
@@ -75,7 +76,31 @@ public class TopicRest implements Serializable {
 		this.map = new HashMap<String, Object>();
 
 		try {
-			int msj = topicBO.insertTopics(topic, descripcion, elemento, imagen, idTopicFirebase, clientId, idUsuarioFirebase);
+			int msj = topicBO.insertTopics(topic, descripcion, elemento, imagen, idTopicFirebase, clientId,
+					idUsuarioFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/insertTopicsGet/", method = {
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<String> insertTopicsGet(@RequestParam("topic") String topic,
+			@RequestParam("descripcion") String descripcion, @RequestParam("elemento") String elemento,
+			@RequestParam("imagen") String imagen, @RequestParam("idTopicFirebase") String idTopicFirebase,
+			@RequestParam("clientId") String clientId, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase) {
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = topicBO.insertTopics(topic, descripcion, elemento, imagen, idTopicFirebase, clientId,
+					idUsuarioFirebase);
 			this.map.put("output", msj);
 
 		} catch (Exception e) {

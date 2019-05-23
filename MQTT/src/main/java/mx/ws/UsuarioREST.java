@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
@@ -67,6 +68,26 @@ public class UsuarioREST implements Serializable {
 		String correo = request.getParameter("correo");
 		String pass = request.getParameter("pass");
 		String idUsuarioFirebase = request.getParameter("idUsuarioFirebase");
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = usuarioBO.insertUsuario(correo, pass, idUsuarioFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/insertUsuarioGet/", method = {
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<String> insertUsuarioGet(@RequestParam("correo") String correo,
+			@RequestParam("pass") String pass, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase) {
 
 		this.map = new HashMap<String, Object>();
 
