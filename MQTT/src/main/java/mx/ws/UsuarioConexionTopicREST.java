@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.GsonBuilder;
@@ -46,7 +47,7 @@ public class UsuarioConexionTopicREST implements Serializable {
 		HTTP_HEADERS.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		HTTP_HEADERS.setAccessControlAllowOrigin("*");
 	}
-	
+
 	@RequestMapping(value = "/listUsuarioConexionTopic", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> listUsuarioConexionTopic() {
 		this.map = new HashMap<String, Object>();
@@ -72,7 +73,52 @@ public class UsuarioConexionTopicREST implements Serializable {
 		this.map = new HashMap<String, Object>();
 
 		try {
-			int msj = usuarioConexionTopicBO.insertUsuarioConexionTopic(valor, idUsuarioFirebase, clientId, idTopicFirebase);
+			int msj = usuarioConexionTopicBO.insertUsuarioConexionTopic(valor, idUsuarioFirebase, clientId,
+					idTopicFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/insertUsuarioConexionTopic2/", method = {
+			RequestMethod.POST }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> insertUsuarioConexionTopic2(@RequestParam("valor") String valor,
+			@RequestParam("idUsuarioFirebase") int host, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase,
+			@RequestParam("clientId") String clientId, @RequestParam("idTopicFirebase") String idTopicFirebase) {
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = usuarioConexionTopicBO.insertUsuarioConexionTopic(valor, idUsuarioFirebase, clientId,
+					idTopicFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/insertUsuarioConexionTopic3/", method = {
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> insertUsuarioConexionTopic3(@RequestParam("valor") String valor,
+			@RequestParam("idUsuarioFirebase") int host, @RequestParam("idUsuarioFirebase") String idUsuarioFirebase,
+			@RequestParam("clientId") String clientId, @RequestParam("idTopicFirebase") String idTopicFirebase) {
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = usuarioConexionTopicBO.insertUsuarioConexionTopic(valor, idUsuarioFirebase, clientId,
+					idTopicFirebase);
 			this.map.put("output", msj);
 
 		} catch (Exception e) {

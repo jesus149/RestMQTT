@@ -21,13 +21,13 @@ public class ConexionTest {
 	@Autowired
 	private IfzConexionBO conexionBO;
 
-	@Ignore
+	@Test
 	public void listConexiones() {
 		List<ConexionDTO> msg = conexionBO.listConexiones();
 		assertNotNull(msg);
 	}
 	
-	@Test
+	@Ignore
 	public void insertConexion() {
 		int msg = conexionBO.insertConexion("testJava", "testJava", 1, "testJava", "testJava", "testJava", "testJava", "OsujYnGqLaRFDQLSLxmqrrC2Ikj1");
 		assertNotNull(msg);
