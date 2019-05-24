@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3f50d584-0814-4469-8903-a31e4d9e1845",
+		"_postman_id": "c006a01b-f15d-48dd-b6ec-fda031560797",
 		"name": "RestMQTT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -76,6 +76,43 @@
 								"usuario",
 								"insertUsuario",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertUsuarioGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuario/insertUsuarioGet/?correo=test&pass=test&idUsuarioFirebase=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuario",
+								"insertUsuarioGet",
+								""
+							],
+							"query": [
+								{
+									"key": "correo",
+									"value": "test"
+								},
+								{
+									"key": "pass",
+									"value": "test"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "test"
+								}
 							]
 						}
 					},
@@ -166,18 +203,75 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/Preview/apiRest/MQTT/insertConexion/",
+							"raw": "http://localhost:8080/MQTT/apiRest/conexion/insertConexion/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"Preview",
-								"apiRest",
 								"MQTT",
+								"apiRest",
+								"conexion",
 								"insertConexion",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertConexionGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/conexion/insertConexionGet/?nombreServicio=test&host=test&puerto=1&ssl=test&usuario=test&password=test&clientId=test&idUsuarioFirebase=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"conexion",
+								"insertConexionGet",
+								""
+							],
+							"query": [
+								{
+									"key": "nombreServicio",
+									"value": "test"
+								},
+								{
+									"key": "host",
+									"value": "test"
+								},
+								{
+									"key": "puerto",
+									"value": "1"
+								},
+								{
+									"key": "ssl",
+									"value": "test"
+								},
+								{
+									"key": "usuario",
+									"value": "test"
+								},
+								{
+									"key": "password",
+									"value": "test"
+								},
+								{
+									"key": "clientId",
+									"value": "test"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "test"
+								}
 							]
 						}
 					},
@@ -279,6 +373,59 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "insertTopicsGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/topic/insertTopicsGet/?topic=test&descripcion=test&elemento=test&imagen=test&idTopicFirebase=test&clientId=test&idUsuarioFirebase=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"topic",
+								"insertTopicsGet",
+								""
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "test"
+								},
+								{
+									"key": "descripcion",
+									"value": "test"
+								},
+								{
+									"key": "elemento",
+									"value": "test"
+								},
+								{
+									"key": "imagen",
+									"value": "test"
+								},
+								{
+									"key": "idTopicFirebase",
+									"value": "test"
+								},
+								{
+									"key": "clientId",
+									"value": "test"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -357,6 +504,47 @@
 								"usuarioConexionTopic",
 								"insertUsuarioConexionTopic",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertUsuarioConexionTopicGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/usuarioConexionTopic/insertUsuarioConexionTopic3/?valor=test&idUsuarioFirebase=test&clientId=test&idTopicFirebase=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"usuarioConexionTopic",
+								"insertUsuarioConexionTopic3",
+								""
+							],
+							"query": [
+								{
+									"key": "valor",
+									"value": "test"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "test"
+								},
+								{
+									"key": "clientId",
+									"value": "test"
+								},
+								{
+									"key": "idTopicFirebase",
+									"value": "test"
+								}
 							]
 						}
 					},
