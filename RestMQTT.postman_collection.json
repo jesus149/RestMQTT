@@ -426,6 +426,61 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "listCatTopics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/topic/listCatTopics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"topic",
+								"listCatTopics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertCatTopicsGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MQTT/apiRest/topic/insertCatTopics/?nombre=testREST&idUsuarioFirebase=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MQTT",
+								"apiRest",
+								"topic",
+								"insertCatTopics",
+								""
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "testREST"
+								},
+								{
+									"key": "idUsuarioFirebase",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -515,7 +570,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/MQTT/apiRest/usuarioConexionTopic/insertUsuarioConexionTopic3/?valor=test&idUsuarioFirebase=test&clientId=test&idTopicFirebase=test",
+							"raw": "http://localhost:8080/MQTT/apiRest/usuarioConexionTopic/insertUsuarioConexionTopicGet/?valor=test&idUsuarioFirebase=test&clientId=test&idTopicFirebase=test",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -525,7 +580,7 @@
 								"MQTT",
 								"apiRest",
 								"usuarioConexionTopic",
-								"insertUsuarioConexionTopic3",
+								"insertUsuarioConexionTopicGet",
 								""
 							],
 							"query": [

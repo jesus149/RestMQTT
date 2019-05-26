@@ -112,4 +112,37 @@ public class TopicRest implements Serializable {
 
 	}
 
+	@RequestMapping(value = "/listCatTopics", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> listCatTopics() {
+		this.map = new HashMap<String, Object>();
+		try {
+			List<TopicDTO> listCatTopics = topicBO.listCatTopics();
+			this.map.put("listCatTopics", listCatTopics);
+		} catch (Exception e) {
+			this.map.put("error", e);
+		}
+
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/insertCatTopics/", method = {
+			RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<String> insertCatTopics(@RequestParam("nombre") String nombre,
+			@RequestParam("idUsuarioFirebase") String idUsuarioFirebase) {
+
+		this.map = new HashMap<String, Object>();
+
+		try {
+			int msj = topicBO.insertCatTopics(nombre, idUsuarioFirebase);
+			this.map.put("output", msj);
+
+		} catch (Exception e) {
+			this.map.put("output", e);
+			System.out.println(e);
+
+		}
+		return new ResponseEntity<String>(new GsonBuilder().create().toJson(this.map), HTTP_HEADERS, HttpStatus.OK);
+
+	}
+
 }

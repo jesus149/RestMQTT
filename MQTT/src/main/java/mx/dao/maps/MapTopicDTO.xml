@@ -32,5 +32,13 @@
       {CALL s0f1s0ft_datacloud.SP_INSERT_TOPIC(#{P_TOPIC}, #{P_DESCRIPCION}, #{P_ELEMENTO}, #{P_IMAGEN}, 
       	#{P_IDTOPICFIREBASE}, #{P_CLIENTID}, #{P_IDUSUARIOFIREBASE})}
    </select>
+   
+   <select id="listCatTopics" resultMap="R_TopicDTO" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_SELECT_CAT_TOPIC()}
+   </select>
+   
+   <select id="insertCatTopics" parameterType="java.util.Map" statementType="CALLABLE">
+      {CALL s0f1s0ft_datacloud.SP_INSERT_CAT_TOPICS(#{P_NOMRE}, #{P_IDUSUARIOFIREBASE})}
+   </select>
 
 </mapper>

@@ -346,3 +346,51 @@ BEGIN
 		(idUsuario,idConexion,idTopic,P_VALOR,now());
 
 END;
+
+-- -----------------------------------------------------
+-- Table s0f1s0ft_datacloud.cat_topics
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS s0f1s0ft_datacloud.cat_topics (
+  id_topics INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(255) NULL,
+  usuario_creo VARCHAR(255) NULL,
+  fecha_creo DATETIME NULL,
+  usuario_modifico VARCHAR(255) NULL,
+  fecha_modifico DATETIME NULL,
+  PRIMARY KEY (id_usuario))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- PROCEDURE s0f1s0ft_datacloud.SP_SELECT_CAT_TOPIC
+-- -----------------------------------------------------
+
+DROP PROCEDURE IF EXISTS s0f1s0ft_datacloud.SP_SELECT_CAT_TOPIC;
+
+DELIMITER $$
+
+CREATE PROCEDURE s0f1s0ft_datacloud.SP_SELECT_CAT_TOPIC ()
+BEGIN
+	
+    SELECT id_topics, NOMBRE 
+    FROM s0f1s0ft_datacloud.cat_topics;
+
+END;
+
+-- -----------------------------------------------------
+-- PROCEDUREs s0f1s0ft_datacloud.SP_INSERT_CAT_TOPICS
+-- -----------------------------------------------------
+
+DROP PROCEDURE IF EXISTS s0f1s0ft_datacloud.SP_INSERT_CAT_TOPICS;
+
+DELIMITER $$
+
+CREATE PROCEDURE s0f1s0ft_datacloud.SP_INSERT_CAT_TOPICS (P_NOMRE VARCHAR(250),
+    P_ID_USUARIO_FIREBASE VARCHAR(250))
+BEGIN
+
+	INSERT INTO s0f1s0ft_datacloud.cat_topics 
+		(NOMBRE, usuario_modifico, fecha_modifico) 
+	VALUES
+		(P_NOMRE,P_ID_USUARIO_FIREBASE, NOW());
+    
+END;

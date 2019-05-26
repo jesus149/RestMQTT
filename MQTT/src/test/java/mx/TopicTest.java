@@ -27,10 +27,16 @@ public class TopicTest {
 		assertNotNull(msg);
 	}
 
-	@Test
+	@Ignore
 	public void insertTopics() {
 		int msg = topicBO.insertTopics("testJava", "testJava", "testJava", "testJava", "Letcvd08iOxqw8DXGQu",
 				"myClientId1557892600979", "OsujYnGqLaRFDQLSLxmqrrC2Ikj1");
+		assertNotNull(msg);
+	}
+	
+	@Test
+	public void insertCatTopics() {
+		int msg = topicBO.insertCatTopics("testJava", "OsujYnGqLaRFDQLSLxmqrrC2Ikj1");
 		assertNotNull(msg);
 	}
 

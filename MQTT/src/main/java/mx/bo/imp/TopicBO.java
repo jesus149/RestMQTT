@@ -57,4 +57,34 @@ public class TopicBO implements IfzTopicBO {
 		}
 	}
 
+	@Override
+	public List<TopicDTO> listCatTopics() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			return topicDAO.listCatTopics(map);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			LOG.error(e);
+			return null;
+		}
+	}
+
+	@Override
+	public int insertCatTopics(String nombre, String idUsuarioFirebase) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+
+			map.put("P_NOMRE", (nombre != null && !nombre.isEmpty()) ? nombre : "");
+			map.put("P_IDUSUARIOFIREBASE", (idUsuarioFirebase != null && !idUsuarioFirebase.isEmpty()) ? idUsuarioFirebase : "");
+
+			topicDAO.insertCatTopics(map);
+			
+			return 1;
+			
+		} catch (Exception e) {
+			LOG.error(e);
+			return 0;
+		}
+	}
+
 }

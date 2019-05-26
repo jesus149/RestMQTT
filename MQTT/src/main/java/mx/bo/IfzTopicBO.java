@@ -14,5 +14,9 @@ public interface IfzTopicBO extends Serializable {
 
 	public int insertTopics(String topic, String descripcion, String elemento, String imagen, String idTopicFirebase,
 			String clientid, String idUsuarioFirebase);
+	
+	public List<TopicDTO> listCatTopics();
+
+	public int insertCatTopics(String nombre, String idUsuarioFirebase);
 
 }
