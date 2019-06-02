@@ -388,9 +388,22 @@ CREATE PROCEDURE s0f1s0ft_datacloud.SP_INSERT_CAT_TOPICS (P_NOMRE VARCHAR(250),
     P_ID_USUARIO_FIREBASE VARCHAR(250))
 BEGIN
 
-	INSERT INTO s0f1s0ft_datacloud.cat_topics 
-		(NOMBRE, usuario_modifico, fecha_modifico) 
-	VALUES
-		(P_NOMRE,P_ID_USUARIO_FIREBASE, NOW());
+	 DECLARE exist int;
+     
+     select count(nombre) into exist
+     from s0f1s0ft_datacloud.cat_topics 
+     where nombre = P_NOMRE;
+     
+     if exist > 0 then
+		update s0f1s0ft_datacloud.cat_topics
+        set  usuario_modifico = P_ID_USUARIO_FIREBASE,
+        fecha_modifico = now()
+        where nombre = P_NOMRE;
+	else 
+		INSERT INTO s0f1s0ft_datacloud.cat_topics 
+			(NOMBRE, usuario_creo, fecha_creo) 
+		VALUES
+			(P_NOMRE,P_ID_USUARIO_FIREBASE, NOW());
+    end if;
     
 END;
