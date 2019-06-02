@@ -61,11 +61,7 @@ angular.module('app.routes', [])
       .state('graph', {
         url: '/page14',
         templateUrl: 'templates/graph.html',
-        controller: 'graphCtrl',
-        params:{
-          serviceName: null,
-          element : null
-        }
+        controller: 'graphCtrl'
       })
 
     $urlRouterProvider.otherwise('/page1/page5')

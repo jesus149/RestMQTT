@@ -1,49 +1,20 @@
 <ion-view id="page14" title="Grafica">
   <ion-content class="has-header" padding="true">
-   
-  <h1>{{element}}</h1>
+    
+    <canvas id="chartMQTT" class="chart chart-line" chart-data="data" chart-labels="labels"
+      chart-options="options"></canvas>
 
+    <!--div id="container" style="min-width: 100%;
+                  height: 400px;
+                  margin: 0 auto">
+    </div-->
 
-  <div ng-switch="element">
-    <div ng-switch-when="line">
-       <div id="chartMQTTL">
-      </div>
-    </div>
-    <div ng-switch-when="pie">
-       <div id="chartMQTT">
-         
-       </div>
-    </div>
-    <div ng-switch-when="meter">
-       <div id="chartMQTTM">
-         
-       </div>
-    </div>
-    <div ng-switch-when="switch">
-      <!--Solo se mostrará si el elemento es switch -->
-      <div class='onoffswitch' ng-click="notifyOnOff()">
-            <input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myswitch' >
-            <label class='onoffswitch-label' for='myswitch'>
-            <span class='onoffswitch-inner'></span>
-            <span class='onoffswitch-switch'></span>
-            </label>
-      </div>
-      <!--Solo se mostrará si el elemento es switch -->
-    </div>
-    <div ng-switch-when="message">
-       <div id="chartMQTTMMS"></div>
-    </div>
-    <div ng-switch-default>
-       <p>No se encontró ninguna grafica, vuelve a intentarlo</p>
-    </div>
-  </div>
-   
-
-    <div class="list list-bell">
-      <div style="width: 100%;" ng-click="notify()">
-        <img src="../img/bell.png" width="50px">
+    <div class="list">
+      <button style="width: 100%;" ng-click="notify()" class="button button-large button-clear flat
+                         waves-effect waves-button waves-light
+                         icon ion-android-notifications-none pull-right text-white">
         Notificar
-      </div>
+      </button>
     </div>
 
 
