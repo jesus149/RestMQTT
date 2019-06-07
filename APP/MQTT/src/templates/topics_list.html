@@ -1,16 +1,24 @@
 <ion-view style="" class=" " id="page9" title="Topics">
     <ion-content class="has-header" padding="false">
 
+      <div>
+        <label>Conexion: </label>
+            <select class="form-control" ng-model="conexiones.serviceName" ng-change="changeTopics(conexiones)"
+            ng-options="conexiones.serviceName for conexiones in conexiones">
+            </select>
+      </div>
+
         <div ng-repeat="item in topics" style=" margin-bottom: 0;" class="list condensed-space no-padding">
 
           <div class="card dark-bg in" >
             <a class="item clear-bg item-bg-image waves-effect waves-button waves-light has-mask-reverse">
-              <!--<h2>{{item.topic}}</h2>-->
+              <h2>{{item.topic}}</h2>
+             <!-- <p>{{item.serviceName}}</p>-->
               <p>{{item.info}}</p>
               <div class="button-bar" style="bottom: 0;position: absolute;right: 0;">
-                <button ng-click="deleteTopic(item.$id)" class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-android-delete pull-right text-white"></button>
+                <button ng-click="deleteTopic(item.$id, item.serviceName)" class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-android-delete pull-right text-white"></button>
                 <button ng-click="itemManipulation(item)" class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-ios-compose pull-right text-white"></button>
-                <button ng-click="view_graph(item.topic)" class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-ios-eye pull-right text-white"></button>
+                <button ng-click="view_graph(item)" class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-ios-eye pull-right text-white"></button>
               </div>
               <img ng-src="{{&apos;img/&apos;+ item.img +&apos;.png&apos;}}"   >
             </a>

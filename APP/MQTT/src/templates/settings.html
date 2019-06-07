@@ -1,47 +1,60 @@
 <ion-view style="" class=" " id="page12" title="Settings">
     <ion-content class="has-header" padding="false"  >
 
-        <a style="min-width: 50%;border-radius: 0px;" ng-click="newService()"  class="button button-calm icon-left ion-checkmark">Agregar MQTT</a>
+        
 
       <form name="settingForm" class="list " id="settings-form">
+          <div>
+              <label>Conexion: </label>
+              <select class="form-control" id="conexiones" ng-model="conexiones.serviceName" ng-change="changeConexion(conexiones)"
+              ng-options="conexiones.serviceName for conexiones in conexiones">
+              <option value="Seleccione una conexion">Seleccione una conexion</option>
+              </select>
+              <!--a style="min-width: 50%;border-radius: 0px;" ng-click="resetForm()" class="button">nueva conexion</a-->
+          </div>
 
         <ion-list>
 
             <label class="item item-input ic-selected">
                 <a class="icon icon-right ion-android-contact" style="margin-right: 10px;"></a>
-                <input style="color: #000;" ng-model="mqtt.serviceName" type="text" placeholder="Nombre del servicio">
+                <input id="serviceName" style="color: #000;" ng-model="mqtt.serviceName" type="text" placeholder="Nombre del servicio">
               </label>
 
           <label class="item item-input ic-selected">
             <a class="icon icon-right ion-android-cloud" style="margin-right: 10px;"></a>
-            <input style="color: #000;" ng-model="mqtt.url" type="text" placeholder="Host" >
+            <input id="host" style="color: #000;" ng-model="mqtt.url" type="text" placeholder="Host" >
             <ion-toggle style="width: 0;margin: 0;"  ng-model="mqtt.ssl" ng-checked="mqtt.ssl"></ion-toggle>
           </label>
 
           <label class="item item-input ic-selected">
             <a class="icon icon-right ion-ios-cog" style="margin-right: 10px;"></a>
-            <input style="color: #000;" ng-model="mqtt.port" type="text"  placeholder="Puerto (Utilice el puerto websocket)">
+            <input id="puerto" style="color: #000;" ng-model="mqtt.port" type="text"  placeholder="Puerto (Utilice el puerto websocket)">
           </label>
 
           <label class="item item-input ic-selected">
             <a class="icon icon-right ion-android-contact" style="margin-right: 10px;"></a>
-            <input style="color: #000;" ng-model="mqtt.username" type="text" placeholder="Usuario (Opcional)">
+            <input id="usuario" style="color: #000;" ng-model="mqtt.username" type="text" placeholder="Usuario (Opcional)">
           </label>
 
           <label class="item item-input ic-selected">
             <a class="icon icon-right ion-locked" style="margin-right: 10px;"></a>
-            <input style="color: #000;" ng-model="mqtt.password" type="password" placeholder="Contraseña (Opcional)">
+            <input id="password" style="color: #000;" ng-model="mqtt.password" type="password" placeholder="Contraseña (Opcional)">
           </label>
 
         </ion-list>
 
+        
+
       </form>
+
+      <div id="footer" class="button-bar"  >
+        <a style="min-width: 30%;border-radius: 0px;" ng-click="cancel()" class="button button-lite icon-left ion-close">Cancelar</a>
+        <a style="min-width: 30%;border-radius: 0px;" ng-click="save(mqtt)"  class="button button-calm icon-left ion-checkmark">Guardar</a>
+        <a style="min-width: 20%;border-radius: 0px;" ng-click="resetForm()" class="button icon-left ion-plus">Agregar</a>
+      </div>
     </ion-content>
 
-    <div id="footer" class="button-bar"  >
-      <a style="min-width: 50%;border-radius: 0px;" ng-click="cancel()" class="button button-lite icon-left ion-close">Cancelar</a>
-      <a style="min-width: 50%;border-radius: 0px;" ng-click="save(mqtt)"  class="button button-calm icon-left ion-checkmark">Guardar</a>
-    </div>
+    
   <!-- </ion-footer-bar>  -->
 
 </ion-view>
