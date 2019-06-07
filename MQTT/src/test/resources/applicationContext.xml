@@ -23,7 +23,7 @@
 
 	<bean id="dataSource_MDMSEP" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	  	<property name="url" value="jdbc:mysql://mysql1001.mochahost.com:3306/s0f1s0ft_datacloud" />
+	  	<property name="url" value="jdbc:mysql://mysql1001.mochahost.com:3306/s0f1s0ft_datacloud?useInformationSchema=true" />
 	  	<property name="username" value="s0f1s0ft_cloud" />
 	  	<property name="password" value="Welcome1!" />
 	</bean>
