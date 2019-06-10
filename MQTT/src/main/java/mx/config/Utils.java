@@ -227,21 +227,13 @@ public class Utils implements Serializable {
 		// System.out.println(generaToken("ROMJ931110HMCJRS00"));
 		// System.out.println(validaToken("Uk9NSjkzMTExMDEwLzE2"));
 		
-		System.out.println(base64Decode("TUFDTDg3MDgwM01ER1JTRDAx"));
+		//System.out.println(base64Decode("TUFDTDg3MDgwM01ER1JTRDAx"));
 		
-		/*String remitente = "autonomiacurricular.fasecero@nube.sep.gob.mx";
-		String asunto = "Activación de cuenta";
-		String nombre = "Jesus";
-		String primerAp = "Rojas";
-		String segundoAp = "Moreno";
-		String curp = "ROMJ931110HMCJRS00";
-		String correo = "jrojasm@kionetworks.com";
-		String mensaje = "<body style=\"background: #ccc\"><div style=\"background:white; margin: 20px 10%; padding: 60px; font-family: arial\"><h4>Buen dia "
-				+ nombre + " " + primerAp + " " + segundoAp
-				+ "</h4><p style=\"font-size:18px;line-height: 25px; text-align: justify\"><br><br>¡Tu registro has sido exitoso! para ingresar al portal de autonomia curricular accede con las siguientes credenciales:</p><style>label{font-weight: 700;}td{width: 50%;padding: 5px;border: 0px;}tr:nth-child(even)>td{background-color: #eee;}td>p{text-align: right;}table {width: 60%;margin: auto;}</style><table><tbody><tr><td><label>Usuario</label></td><td><p>"
-				+ correo + " </p></td></tr><tr><td><label>Contraseña</label></td><td><p>" + curp
-				+ "</p></td></tr></tbody></table><p> Y luego entrar al siguiente link: </p><br><h4 style=\"text-align:center\"><a href=\"http://localhost:4200/activavion.html?c=\">Activación</a></h4><br><br><p>Sin más por el momento reciba un cordial saludo por parte del equipo de autonomia curricular</p></p></div></body>";
-		System.out.println(new Utils().enviarMail(remitente, correo, null, null, asunto, mensaje, null));*/
+		String remitente = "autonomiacurricular.fasecero@nube.sep.gob.mx";
+		String asunto = "Activacion de cuenta";
+		String correo = "jesus_rojas1993@hotmail.com";
+		String mensaje = "test";
+		System.out.println(new Utils().enviarMail(remitente, correo, null, null, asunto, mensaje, null));
 		
 	}
 }
