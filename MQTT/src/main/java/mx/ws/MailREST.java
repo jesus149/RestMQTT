@@ -50,7 +50,7 @@ public class MailREST extends Utils implements Serializable {
 
 		String body = "<body style='background: #ccc'><div style='background:white; margin: 20px 10%; padding: 60px; font-family: arial'><p style='font-size: 20px;line-height: 25px; text-align: justify'><strong>Buen dia "
 				+ nombre
-				+ "</strong></p><br><p style='font-size: 18px;line-height: 25px; text-align: justify'>Su mensaje ha sido recibido, uno de nuestros agentes se pondra en contacto con usted.</p><p style='font-size: 18px;line-height: 25px; text-align: justify'>Sin otro particular, saludos.</p><br><p>Servicios Especializados en SOA, BPM, CMS, WEB 2.0</p><p>Copyright &copy; SofiSoft 2019. Derechos Reservados</p></div></body>";
+				+ "</strong></p><br><p style='font-size: 18px;line-height: 25px; text-align: justify'>Su mensaje ha sido recibido, uno de nuestros agentes se pondra en contacto con usted.</p><br><p style='font-size: 18px;line-height: 25px; text-align: justify'>Sin otro particular, saludos.</p><br><p>Dirección: <a href=\"https://goo.gl/maps/vogiopqNgit8zjPv9\" title=\"Dirección\">Gabriel Mancera 725, Benito Juárez, C.P.03100 CDMX</a></p><p>Contacto: <a href=\"tel:+525582323899\" title=\"Teléfono\"> +52.55.8232.3899</a></p><p>Correo: <a href=\"mailto:info@sofisoft.com.mx\" title=\"Correo\"> info@sofisoft.com.mx</a><p>Sitio web: <a href=\"https://sofisoft.com.mx\" title=\"Sitio web\">https://sofisoft.com.mx</a></p><p>Servicios Especializados en SOA, BPM, CMS, WEB 2.0</p><p>Copyright &copy; SofiSoft 2019. Derechos Reservados</p></div></body>";
 
 		System.out.println("asunto: " + asunto);
 
